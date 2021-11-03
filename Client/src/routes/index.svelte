@@ -1,8 +1,7 @@
 <script lang="ts">
-	const title = 'Workout Menagement';
 </script>
 
-<h1>{title}</h1>
+<main />
 
 <style lang="scss" scoped>
 </style>

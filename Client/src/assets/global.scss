@@ -4,11 +4,14 @@
 	box-sizing: border-box;
 
 	font-weight: 400;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; // TODO Change to better font
+	font-family: 'Nunito', sans-serif;
 }
 
 @for $i from 1 through 6 {
 	h#{$i} {
 		font-size: 1rem;
+
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300;
 	}
 }

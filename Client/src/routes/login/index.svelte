@@ -5,18 +5,33 @@
     - połączyć buttona logowania z przejściem do strony głównej ( request - jesli przejdzie przez logowanie to przepuść na strone glowna) 
  -->
 
-<script>
+<script lang="ts">
     import Icon from 'mdi-svelte';
-    import { mdiFacebook } from '@mdi/js';
+    import { mdiFacebook, mdiFormTextboxPassword } from '@mdi/js';
     import { mdiGoogle } from '@mdi/js';
     import { mdiTwitter } from '@mdi/js';
     import { mdiEmailPlusOutline } from '@mdi/js';
+    let login = "";
+    console.log(login);
+    let password = "";
+
+    const getData: svelte.JSX.FormEventHandler<HTMLFormElement> = (event) =>{
+        event.preventDefault();
+        
+        var login_data = {
+            login: login,
+            password: password
+        }
+
+        login = '';
+        password = '';
+
+        console.log(login_data);
+    }
 </script>
 
 <div class="container">
-    <header class="header">
-        <h1 class="header__title">Workout Menagement</h1>
-    </header>
+    
     <nav class="navigation">
         <button class="navigation__buttons"><Icon path={mdiFacebook} color="black" size="1.5em" /></button>
         <button class="navigation__buttons"><Icon path={mdiGoogle} color="black" size="1.5em"/></button>
@@ -28,34 +43,24 @@
         <p class="line__text">or</p>
         <div class="line__next"></div>
     </div>
-    <div class="form">
+    <form class="form" on:submit={getData}>
         <!-- uzupełnic inputy o parametry -->
         <label class="form__label">Email
-            <input class="form__label--input" type="text">
+            <input class="form__label--input" type="email" bind:value={login}>
         </label>
         <label class="form__label">Password
-            <input class="form__label--input" type="text">
+            <input class="form__label--input" type="password"  bind:value={password}>
         </label>
-        <button class="form__button">Login</button>
-    </div>
+        <button type="submit" class="form__button">Login</button>
+    </form>
     <footer class="footer">
         <p class="footer__text">Did you forgot your password?</p>
-        <a class="footer__link "href="google.com">Reset Password</a>
+        <a class="footer__link" href="/register">Reset Password</a>
     </footer>
 </div>
 
 <style lang="scss" scoped>
-    .header{
-        widows: 100%;
-        padding: 10% 0 5% 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        &__title{
-            font-size: 1.5em;
-        }
-    }
+    
 
     .navigation{
         width: 100%;
